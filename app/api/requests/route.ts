@@ -135,11 +135,11 @@ export async function GET(req: Request) {
     // If coordinates provided, annotate distance & filter by radius
     if (lat !== null && lng !== null) {
       const filtered = requests
-        .map((r) => {
+        .map((r:any) => {
           const dist = calculateDistance(lat, lng, r.latitude, r.longitude);
           return { ...r, distanceKm: Math.round(dist * 10) / 10 };
         })
-        .filter((r) => r.distanceKm <= radius);
+        .filter((r:any) => r.distanceKm <= radius);
 
       return NextResponse.json({ success: true, requests: filtered });
     }
