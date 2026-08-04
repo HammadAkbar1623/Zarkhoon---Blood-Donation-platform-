@@ -25,7 +25,7 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
 
-    const unreadCount = notifications.filter((n) => !n.isRead).length;
+    const unreadCount = notifications.filter((n:any) => !n.isRead).length;
 
     return NextResponse.json({
       success: true,
